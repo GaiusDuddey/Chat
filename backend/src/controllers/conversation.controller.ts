@@ -157,7 +157,7 @@ export const getConversationById = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params.id as string;
     const userId = req.user!.userId;
 
     const conversation = await prisma.conversation.findFirst({
@@ -192,7 +192,7 @@ export const updateConversation = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params.id as string;
     const userId = req.user!.userId;
     const { name, avatarUrl } = req.body;
 
@@ -236,7 +236,7 @@ export const addMember = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params.id as string;
     const userId = req.user!.userId;
     const { memberId } = req.body;
 
@@ -279,7 +279,8 @@ export const removeMember = async (
   next: NextFunction
 ) => {
   try {
-    const { id, userId: memberToRemove } = req.params;
+    const id = req.params.id as string;
+    const memberToRemove = req.params.userId as string;
     const userId = req.user!.userId;
 
     // Check if user is admin or removing themselves
