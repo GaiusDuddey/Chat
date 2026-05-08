@@ -110,7 +110,7 @@ export const getUserById = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.params.id as string;
+    const id = req.params.id as string;
 
     const user = await prisma.user.findUnique({
       where: { id },
