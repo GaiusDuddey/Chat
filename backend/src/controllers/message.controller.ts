@@ -8,7 +8,7 @@ export const getMessages = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.params.id as string;
+    const id = req.params.id as string;
     const userId = req.user!.userId;
     const pagination = parsePaginationParams(req.query as any);
 
@@ -25,7 +25,7 @@ export const sendMessage = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.param.id as strings;
+    const id = req.params.id as string;
     const userId = req.user!.userId;
     const { content, type, mediaUrl, replyToId } = req.body;
 
@@ -50,7 +50,7 @@ export const editMessage = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = .id as string;
+    const id = req.params.id as string;
     const userId = req.user!.userId;
     const { content } = req.body;
 
@@ -67,7 +67,7 @@ export const deleteMessage = async (
   next: NextFunction
 ) => {
   try {
-    const { id } = req.params.id as string;
+    const id = req.params.id as string;
     const userId = req.user!.userId;
 
     await messageService.deleteMessage(id, userId);
@@ -88,8 +88,6 @@ export const uploadMedia = async (
       return;
     }
 
-    // In production, upload to S3 and return the URL
-    // For dev, use local path
     const mediaUrl = `/uploads/${req.file.filename}`;
     res.json({ mediaUrl });
   } catch (error) {
