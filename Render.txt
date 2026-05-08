@@ -1,0 +1,8 @@
+① PostgreSQL → New → PostgreSQL
+Name it realchat-db
+Copy the Internal Database URL after it's created
+postgresql://realchat_db_epol_user:G81xOSFFPXqAZaiVE2tuRnJRRpojTbBV@dpg-d7uci1bbc2fs73fbckn0-a/realchat_db_epol
+
+
+Interal Key-Value(Redis) URL
+redis://red-d7ucn59po60c7381sf7g:6379
