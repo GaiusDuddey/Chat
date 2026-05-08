@@ -14,7 +14,8 @@ const MessageInput: React.FC<MessageInputProps> = ({
   onFileUpload,
 }) => {
   const [message, setMessage] = useState('');
-  const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const isTypingRef = useRef(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -112,11 +113,10 @@ const MessageInput: React.FC<MessageInputProps> = ({
           id="send-message-button"
           onClick={handleSend}
           disabled={!message.trim()}
-          className={`p-2.5 rounded-xl shrink-0 mb-0.5 transition-all duration-200 ${
-            message.trim()
+          className={`p-2.5 rounded-xl shrink-0 mb-0.5 transition-all duration-200 ${message.trim()
               ? 'gradient-primary text-white shadow-lg shadow-primary-500/20 hover:opacity-90 active:scale-95'
               : 'bg-dark-800/50 text-dark-600 cursor-not-allowed'
-          }`}
+            }`}
         >
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />

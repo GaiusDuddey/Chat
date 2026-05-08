@@ -108,7 +108,8 @@ export const useMessages = (conversationId: string | null) => {
 
   // Remove a message (soft delete)
   const removeMessage = (messageId: string) => {
-    updateMessage(messageId, { isDeleted: true, content: null });
+    updateMessage(messageId, { isDeleted: true, content: undefined });
+
   };
 
   return {
